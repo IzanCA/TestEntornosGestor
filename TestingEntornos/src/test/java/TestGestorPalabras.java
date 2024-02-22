@@ -42,4 +42,37 @@ public class TestGestorPalabras {
         GestorPalabras g = new GestorPalabras();
         assertEquals("a    a", g.invertirPalabra("a    a"));        
     }
+
+    //Contar Vocales
+    
+    @Test
+    public void contarBien() throws stringVacioException {
+        GestorPalabras g = new GestorPalabras();
+        assertEquals(3, g.contarVocales("avion"));
+
+    }
+
+    @Test
+    public void contarTildes() throws stringVacioException {
+        GestorPalabras g = new GestorPalabras();
+        assertEquals(3, g.contarVocales("avión"));
+    }
+
+    @Test
+    public void contarConEspacios() throws stringVacioException {
+        GestorPalabras g = new GestorPalabras();
+        assertEquals(3, g.contarVocales("a vión"));
+    }
+
+    @Test
+    public void contarMayusculas() throws stringVacioException {
+        GestorPalabras g = new GestorPalabras();
+        assertEquals(3, g.contarVocales("AVIÓN"));
+    }
+
+    @Test(expected = stringVacioException.class)
+    public void contarVacio() throws stringVacioException {
+        GestorPalabras g = new GestorPalabras();
+        g.contarVocales("");
+    }
 }
