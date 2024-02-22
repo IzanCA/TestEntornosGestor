@@ -1,12 +1,27 @@
 public class GestorPalabras {
-    public boolean esPalindromo(String palabra) {
-        String palabraFormateada = palabra.replaceAll("\\s+", "").toLowerCase();
-        
+    public boolean esPalindromo(String palabra) throws intComoString, SimbolException, LenghtMenor2, stringVacioException {
+        String palabraFormateada = palabra.replaceAll("\s+", "").toLowerCase();
+        if (palabraFormateada.length() == 0) {
+            throw new stringVacioException("Has introducido un string vacío");
+        } else if (palabraFormateada.length() < 2) {
+            throw new LenghtMenor2("La longitud es menor a 2");
+        } else {
+            for (int i = 0; i < palabraFormateada.length(); i++) {
+                if (Character.isDigit(palabraFormateada.charAt(i))) {
+                    throw new intComoString("Has introducido un entero");
+                } else if (!Character.isLetterOrDigit(palabraFormateada.charAt(i))) {
+                    throw new SimbolException("Has introducido un símbolo");
+                }
+            }
+        }
+
         for (int i = 0; i < palabraFormateada.length() / 2; i++) {
+
             if (palabraFormateada.charAt(i) != palabraFormateada.charAt(palabraFormateada.length() - i - 1)) {
                 return false;
             }
         }
+
         return true;
     }
 
