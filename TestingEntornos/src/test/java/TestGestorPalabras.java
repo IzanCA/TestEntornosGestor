@@ -10,7 +10,43 @@ import org.dam.testingentornos.GestorPalabras;
 import org.junit.Test;
 
 public class TestGestorPalabras {
+    //Palindromos
+    @Test
+    public void palindromoBien() throws intComoString, SimbolException, LenghtMenor2, stringVacioException {
+        GestorPalabras g = new GestorPalabras();
+        assertEquals(true, g.esPalindromo("oso"));
+        assertEquals(false, g.esPalindromo("ajdhauisdhi"));
+    }
 
+    @Test
+    public void palindromoEspacio() throws intComoString, SimbolException, LenghtMenor2, stringVacioException {
+        GestorPalabras g = new GestorPalabras();
+        assertEquals(true, g.esPalindromo("O so"));
+    }
+    
+    @Test(expected = intComoString.class)
+    public void palindromoNumeros() throws intComoString, SimbolException, LenghtMenor2, stringVacioException{
+        GestorPalabras g = new GestorPalabras();
+        g.esPalindromo("p0");
+    }
+    
+    @Test(expected = SimbolException.class)
+    public void palindromoSimbolos() throws SimbolException, intComoString, LenghtMenor2, stringVacioException{
+        GestorPalabras g = new GestorPalabras();
+        g.esPalindromo("@polichia");
+    }
+    
+    @Test(expected = LenghtMenor2.class)
+    public void palindromo1Letra() throws SimbolException, intComoString, LenghtMenor2, stringVacioException{
+        GestorPalabras g = new GestorPalabras();
+        g.esPalindromo("l");
+    }
+    
+    @Test (expected = stringVacioException.class)
+    public void palindromoVacio() throws SimbolException, intComoString, LenghtMenor2, stringVacioException{
+        GestorPalabras g = new GestorPalabras();
+        g.esPalindromo("");
+    }
     
     //Invertir palabras
     @Test
