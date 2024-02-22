@@ -14,7 +14,8 @@ public class GestorPalabras {
         int contador = 0;
         for (int i = 0; i < palabra.length(); i++) {
             char caracter = Character.toLowerCase(palabra.charAt(i));
-            if (caracter != 'a' && caracter != 'e' && caracter != 'i' && caracter != 'o' && caracter != 'u') {
+            if (caracter == 'a' || caracter == 'e' || caracter == 'i' || caracter == 'o' || caracter == 'u'
+                    || caracter == 'á' || caracter == 'é' || caracter == 'í' || caracter == 'ó' || caracter == 'ú') {
                 contador++;
             }
         }
